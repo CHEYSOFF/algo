@@ -8,11 +8,18 @@ for i in range(n):
     inn.write(str(random.randint(-2000000000, 2000000000))+" ")
 inn.write("\n")
 inn.close()
-print("Enter 1 if you want to check shell sort\nEnter 2 if you want to check shell sort")
+print("Enter 1 if you want to test shellsort\nEnter 2 if you want to test quicksort\nEnter 3 if you want to test heapsort\nEnter 4 if you want to test introsort\n")
 w1 = int(input())
 sort_name=""
 if (w1==1):
     sort_name="shell_sort"
+elif(w1==2):
+    sort_name="quick_sort"
+elif(w1==3):
+    sort_name="heap_sort"
+elif(w1==4):
+    sort_name="intro_sort"
+
 subprocess.run([sort_name + '.exe', '-o', sort_name + '.o'])
 inn=open("result.txt", 'r')
 su=inn.readline()
@@ -28,8 +35,3 @@ else:
     print("Incorrect\n")
 st=inn.readline()
 print(st+"\n")
-
-
-
-
-
