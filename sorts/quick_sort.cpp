@@ -10,30 +10,53 @@ void sw(int &a, int &b){
 }
 
 void qs(int a[], int l, int r){
+    if(l>=r){
+        return;
+    }
+    int p=a[(l+r)/2];
     int al=l;
     int ar=r;
-    int p=(l+r)/2;
     for(;;){
+        for(;a[al]<p;){
+            al++;
+        }
+        for(;a[ar]>p;){
+            ar--;
+        }
+        if(al>=ar){
+            break;
+        }
+        sw(a[al], a[ar]);
+        al++;
+        ar--;
+    }
+    qs(a,l,ar);
+    qs(a,ar+1,r);
+}
+/*
+if(l>=r){
+        return;
+    }
+    int p=(l+r)/2;
+    int al=l;
+    int ar=r;
+for(;;){
         for(;a[p]>a[l];){
             l++;
         }
         for(;a[p]<a[r];){
             r--;
         }
-        if(r<l){
+        if(l>=r){
             break;
         }
         sw(a[r],a[l]);
         r--;
         l++;
     }
-    if(al<r){
-        qs(a,al,r);
-    }
-    if(ar>l){
-        qs(a,l,ar);
-    }
-}
+    qs(a,al,r);
+    qs(a,r+1,ar);
+*/
 /*
 10
 5 7 8 4 3 5 2 6 4 5
